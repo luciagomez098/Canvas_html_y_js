@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 1: Figuras Básicas</title>
+<style>
+body { text-align: center; background: #f4f4f4; font-family: Arial; }
+canvas { border: 2px solid #000; background: #fff; margin-top: 20px; }
+</style>
+</head>
+<body onload="dibujar();">
+<h1>Módulo 1: Dibujo de Figuras en Canvas</h1>
+<canvas id="miCanvas" width="400" height="300"></canvas>
+<script>
+function dibujar() {
+  const canvas = document.getElementById("miCanvas");
+  const ctx = canvas.getContext("2d");
+
+  // Rectángulos
+  ctx.fillStyle = "black";
+  ctx.fillRect(25, 25, 100, 100);
+  ctx.clearRect(45, 45, 60, 60);
+  ctx.strokeRect(50, 50, 50, 50);
+
+  // Triángulo contorneado
+  ctx.beginPath();
+  ctx.moveTo(200, 125);
+  ctx.lineTo(200, 45);
+  ctx.lineTo(120, 125);
+  ctx.closePath();
+  ctx.stroke();
+
+  // Círculo - cara sonriente
+  ctx.beginPath();
+  ctx.arc(300, 100, 50, 0, Math.PI * 2, true);
+  ctx.moveTo(320, 80);
+  ctx.arc(310, 80, 5, 0, Math.PI * 2, true);
+  ctx.moveTo(290, 80);
+  ctx.arc(280, 80, 5, 0, Math.PI * 2, true);
+  ctx.moveTo(330, 100);
+  ctx.arc(300, 100, 30, 0, Math.PI, false);
+  ctx.stroke();
+}
+</script>
+</body>
+</html>

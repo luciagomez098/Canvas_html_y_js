@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Módulo 2: Animaciones</title>
+<style>
+body { text-align: center; background: #f4f4f4; font-family: Arial; }
+canvas { border: 2px solid #000; background: #fff; margin-top: 20px; }
+</style>
+</head>
+<body onload="animarCuadro(); animarRebote();">
+<h1>Módulo 2: Animaciones en Canvas</h1>
+<canvas id="miCanvas" width="500" height="300"></canvas>
+<script>
+const canvas = document.getElementById("miCanvas");
+const ctx = canvas.getContext("2d");
+
+// Cuadro que se mueve horizontalmente
+let x = 0;
+function animarCuadro() {
+  ctx.clearRect(0, 0, canvas.width, 100);
+  ctx.fillStyle = "green";
+  ctx.fillRect(x, 40, 30, 30);
+  x += 3;
+  if (x > canvas.width) x = 0;
+  requestAnimationFrame(animarCuadro);
+}
+
+// Cuadro que rebota
+let px = 50, py = 200, dx = 3, dy = 2;
+function animarRebote() {
+  ctx.clearRect(0, 120, canvas.width, 180);
+  ctx.fillStyle = "red";
+  ctx.fillRect(px, py, 30, 30);
+  px += dx; py += dy;
+  if (px + 30 > canvas.width || px < 0) dx = -dx;
+  if (py + 30 > canvas.height || py < 120) dy = -dy;
+  requestAnimationFrame(animarRebote);
+}
+</script>
+</body>
+</html>
